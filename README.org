@@ -1,0 +1,47 @@
+* Seashells: Running the software from "The algorithmic beauty of seashells"
+
+  This project needs to run a Basic program inside an emulated DOS
+  box.
+
+  Hans Meinhardt. The algorithmic beauty of sea shells. Springer. 2009.
+
+** Tooling
+
+   We use [[https://www.qemu.org/][QEMU]] running [[http://www.freedos.org/][FreeDOS]]. See [[https://opensource.com/article/17/10/run-dos-applications-linux][here]] for a quick tutorial on
+   installing FreeDOS under emulation.
+
+   There are [[https://gitlab.com/tkchia/GW-BASIC][sources]] and a [[https://codeberg.org/tkchia/GW-BASIC/releases][binary]] available for GW BASIC. I put the
+   binaries into a shared folder, ~shared/~, mounted into the VM as
+   drive D:.
+
+   (To exit back to DOS type ~system~.)
+
+*** Scripts
+
+    - ~install.sh~ :: install FreeDOS from a CD ROM ISO
+    - ~run.sh~ :: run the DOS system
+
+    Both scripts use ~machine.sh~ as a common VM description.
+
+** Running the software
+
+   There are two executables:
+
+   - ~SP.EXE~ :: the main program
+   - ~SPMS.EXE~ :: the same but in monochrome (MS Basic?)
+
+   To run (assuming the shared directory is mounted on D:):
+
+#+begin_src
+d:
+set PATH=d:\devel\gwbasic;%PATH%
+
+cd floppy
+sp
+#+end_src
+
+** Resources
+
+   - [[https://opensource.com/article/21/6/freedos-linux-users][FreeDOS commands for Linux fans]]
+   - [[https://opensource.com/article/21/6/freedos-gw-basic][Why I love programming on FreeDOS with GW-BASIC]]
+   - [[https://opensource.com/article/21/6/freedos-environment-variables][Set and use environment variables in FreeDOS]]
